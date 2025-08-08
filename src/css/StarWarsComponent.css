@@ -1,0 +1,159 @@
+/* StarWarsComponent.css */
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;500;600;700&display=swap');
+
+/* Basic styles for the entire page */
+body {
+    background-color: #000000; /* Dark space background */
+    font-family: 'Orbitron', sans-serif;
+    color: #FEE100; /* Yellow-gold text for Star Wars theme */
+}
+
+/* Container for the entire component */
+.star-wars-container {
+    max-width: 90%;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #1a1a1a; /* Dark gray for a sleek look */
+    border: 2px solid #FEE100; /* Yellow-gold border */
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(254, 225, 0, 0.4);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Heading for the table */
+.star-wars-heading {
+    color: #FEE100;
+    font-family: 'Bebas Neue', cursive;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+/* Container for the table, enabling horizontal scrolling */
+.table-container {
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+/* Main table styling */
+.star-wars-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #E0E0E0; /* Light gray for table data */
+    background-color: #2a2a2a; /* Slightly lighter dark gray for table */
+    table-layout: fixed; /* Fix table layout */
+    word-wrap: break-word; /* Wrap long words */
+}
+
+/* Table header row styling */
+.star-wars-table thead tr {
+    border-bottom: 2px solid #FEE100;
+    background-color: #222222;
+}
+
+.star-wars-table th {
+    padding: 12px 8px;
+    text-align: left;
+    color: #FEE100;
+    text-transform: uppercase;
+    font-size: 0.8rem; /* ลดขนาดฟอนต์ลงเล็กน้อย */
+    letter-spacing: 1px;
+    white-space: normal; /* อนุญาตให้ข้อความขึ้นบรรทัดใหม่ */
+}
+
+/* Table data cell styling */
+.star-wars-table td {
+    padding: 10px 8px;
+    text-align: left;
+    border-bottom: 1px solid #444;
+    font-size: 0.8rem; /* ลดขนาดฟอนต์ลงเล็กน้อย */
+    white-space: normal; /* อนุญาตให้ข้อความขึ้นบรรทัดใหม่ */
+}
+
+/* Styling for the search input and label */
+.search-container {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.search-container label {
+    margin-right: 15px;
+    color: #FEE100;
+    font-size: 1rem;
+}
+
+.search-container input {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #FEE100;
+    background-color: #333;
+    color: #fff;
+    font-size: 1rem;
+    width: 200px;
+}
+
+/* Pagination buttons container */
+.pagination-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Pagination button styling */
+.pagination-container button {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #FEE100;
+    color: #000;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+}
+
+.pagination-container button:hover:not(:disabled) {
+    background-color: #fff;
+    transform: translateY(-2px);
+}
+
+.pagination-container button:disabled {
+    background-color: #555;
+    color: #999;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Styling for the no data message */
+.no-data-message {
+    color: #FEE100;
+    font-style: italic;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .star-wars-container {
+        padding: 15px;
+    }
+
+    .star-wars-heading {
+        font-size: 1.8rem;
+    }
+
+    .search-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .search-container label {
+        margin-bottom: 10px;
+    }
+}

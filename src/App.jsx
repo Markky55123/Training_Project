@@ -5,14 +5,15 @@ import './App.css'
 import Card from './components/Card'
 import CardEmployee from './components/EmployeeCard'
 import { system } from './config/config'
+import StarWarsComponent from './components/StarWarsComponent'
 
 function App() {
   
   return (
     <>
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', backgroundColor: 'white', padding: '20px', borderRadius: '10px' }}>
+    <div >
       
-      <h1 style={{color: 'black'}}>{system.name}</h1>
+      {/* <h1 style={{color: 'black'}}>{system.name}</h1>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', borderRadius: '40px', padding: '50px', backgroundColor: 'lightgray' }}>
         <div style={{ display: 'flex', alignItems: 'left' }}>
           <h3 style={{color: 'black'}}>{system.descritption}</h3>
@@ -24,7 +25,9 @@ function App() {
           <CardEmployee cardColor={'gray'} name={'Miw'} sex={'female'} id={4}/>
         </div>
   
-    </div>
+      </div> */}
+
+      <StarWarsComponent />
     </div>
     </>
   )
