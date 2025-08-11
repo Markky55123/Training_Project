@@ -1,20 +1,30 @@
+// src/components/StarWarsComponent.jsx
 import React, { useState, useEffect } from 'react';
+import Filter from './Filter'; 
 import '../css/StarWarsComponent.css';
 
 function StarWarsComponent() {
     const [allStarships, setAllStarships] = useState(null);
     const [data, setData] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
-    // const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [headers, setHeaders] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
+    const [filterType, setFilterType] = useState('passengers'); 
 
     const endpoint = 'starships';
+    
+    const filterOptions = [
+        { value: 'passengers', label: 'Min. Passengers' },
+        { value: 'crew', label: 'Min. Crew' },
+        { value: 'cost_in_credits', label: 'Max. Cost in Credits' },
+        { value: 'length', label: 'Max. Length' }
+    ];
 
     useEffect(() => {
         const fetchAllData = async () => {
-            // setLoading(true);
+            setLoading(true);
             try {
                 const listResponse = await fetch(`https://swapi.tech/api/${endpoint}?page=${currentPage}&limit=10`);
                 if (!listResponse.ok) {
@@ -48,12 +58,10 @@ function StarWarsComponent() {
                 }
                 
                 setAllStarships(detailedStarships);
-                console.log('Fetching data for page:', detailedStarships);
-
             } catch (err) {
                 setError(err);
-            // } finally {
-            //     setLoading(false);
+            } finally {
+                setLoading(false);
             }
         };
 
@@ -62,17 +70,24 @@ function StarWarsComponent() {
 
     useEffect(() => {
         if (allStarships) {
+            const searchNumber = parseInt(searchTerm, 10);
+            
             const filteredStarships = allStarships.filter(item => {
-                const passengers = parseInt(item.passengers, 10);
-                const searchNumber = parseInt(searchTerm, 10);
+                const itemValue = item[filterType] !== 'unknown' ? parseFloat(item[filterType]) : NaN;
+                
                 if (!isNaN(searchNumber)) {
-                    return passengers >= searchNumber;
+                    if (filterType === 'passengers' || filterType === 'crew') {
+                        return itemValue >= searchNumber;
+                    }
+                    else if (filterType === 'cost_in_credits' || filterType === 'length') {
+                        return itemValue <= searchNumber;
+                    }
                 }
                 return true;
             });
             setData(filteredStarships);
         }
-    }, [allStarships, searchTerm]);
+    }, [allStarships, searchTerm, filterType]);
 
     const handleNextPage = () => {
         setCurrentPage(prevPage => prevPage + 1);
@@ -82,26 +97,28 @@ function StarWarsComponent() {
         setCurrentPage(prevPage => Math.max(1, prevPage - 1));
     };
 
-    const handleSearchChange = (e) => {
-        setSearchTerm(e.target.value);
+    const handleSearchChange = (value) => {
+        setSearchTerm(value);
     };
 
-    // if (loading) return <div>Loading...</div>;
+    const handleFilterTypeChange = (value) => {
+        setFilterType(value);
+        setSearchTerm(''); 
+    };
+
+    if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error.message}</div>;
 
     return (
         <div className="star-wars-container">
             <h2 className="star-wars-heading">Star Wars Starships (Page {currentPage})</h2>
-            <div className="search-container">
-                <label htmlFor="searchFilter">Filter by Min. Passengers: </label>
-                <input
-                    id="searchFilter"
-                    type="number"
-                    value={searchTerm}
-                    onChange={handleSearchChange}
-                    placeholder="Enter min passengers"
-                />
-            </div>
+            <Filter
+                searchTerm={searchTerm}
+                onSearchChange={handleSearchChange}
+                filterType={filterType}
+                onFilterTypeChange={handleFilterTypeChange}
+                filterOptions={filterOptions}
+            />
             {data && Array.isArray(data) && headers.length > 0 ? (
                 <div className="table-container">
                     <table className="star-wars-table">

@@ -1,0 +1,40 @@
+/* src/css/Filter.css */
+
+.filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    align-items: center;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-group label {
+    font-size: 1rem;
+    color: #ffe81f; 
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.filter-group select,
+.filter-group input {
+    background-color: #000;
+    border: 1px solid #444;
+    color: #fff;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.filter-group input::placeholder {
+    color: #aaa;
+}
