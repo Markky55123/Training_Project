@@ -1,0 +1,76 @@
+/* src/css/SkeletonLoader.css */
+
+@keyframes pulse-bg {
+    0% {
+        background-color: #333333;
+    }
+    50% {
+        background-color: #444444;
+    }
+    100% {
+        background-color: #333333;
+    }
+}
+
+.skeleton-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.skeleton-card {
+    background-color: #2a2a2a;
+    border: 1px solid #444444; 
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    box-sizing: border-box;
+    
+    flex-basis: 300px;
+    flex-grow: 1;
+    max-width: 400px;
+
+    box-shadow: 0 0 5px rgba(254, 225, 0, 0.2); 
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.skeleton-card:hover {
+    box-shadow: 0 0 10px rgba(254, 225, 0, 0.4);
+}
+
+.skeleton-line-lg,
+.skeleton-line-md,
+.skeleton-line-sm {
+    animation: pulse-bg 1.5s infinite;
+    border-radius: 4px;
+    margin: 0.5rem auto;
+}
+
+.skeleton-line-lg {
+    height: 1.5rem;
+    width: 80%;
+}
+
+.skeleton-line-md {
+    height: 1rem;
+    width: 60%;
+}
+
+.skeleton-line-sm {
+    height: 0.8rem;
+    width: 40%;
+}
+
+@media (max-width: 1200px) {
+    .skeleton-card {
+        flex-basis: calc(50% - 2rem);
+    }
+}
+
+@media (max-width: 768px) {
+    .skeleton-card {
+        flex-basis: 100%;
+    }
+}

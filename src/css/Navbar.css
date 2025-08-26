@@ -1,0 +1,82 @@
+/* src/css/Navbar.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@400;500;600;700&display=swap');
+
+/* --- Navbar Container --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #000;
+    border-bottom: 2px solid #FEE100;
+    font-family: 'Orbitron', sans-serif;
+    color: #FEE100;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* z-index: 1000; */
+    
+    box-sizing: border-box;
+}
+
+/* --- Logo and Brand Name --- */
+.navbar-logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navbar-logo {
+    width: 50px;
+    height: auto;
+}
+
+.navbar-brand {
+    color: #FEE100;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+/* --- Navigation Links --- */
+.navbar-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+}
+
+.navbar-item {
+    font-size: 1rem;
+}
+
+.navbar-link {
+    color: #FEE100;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
+}
+
+.navbar-link:hover {
+    color: #fff;
+    text-shadow: 0 0 5px #FEE100, 0 0 10px #FEE100;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+    }
+    .navbar-links {
+        width: 100%;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+}

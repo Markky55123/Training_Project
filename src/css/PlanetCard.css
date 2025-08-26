@@ -1,0 +1,87 @@
+/* src/css/PlanetCard.css */
+
+/* Animation Keyframes */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Card Container Styles */
+.planet-card {
+    background-color: #2a2a2a;
+    border: 1px solid #FEE100;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto;
+    
+    /* Responsive width */
+    width: calc(33.333% - 2rem);
+    box-sizing: border-box; 
+}
+
+.planet-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(254, 225, 0, 0.3);
+}
+
+.planet-card h3 {
+    color: #FEE100;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.8rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.8rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.planet-card p {
+    color: #E0E0E0;
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+    line-height: 1.4;
+}
+
+.planet-card p strong {
+    color: #FEE100;
+    margin-right: 0.5rem;
+}
+
+/* Image container and animation */
+.planet-image-container {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 1rem;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid #FEE100;
+    box-shadow: 0 0 10px rgba(254, 225, 0, 0.6);
+}
+
+.planet-spin {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: spin 30s linear infinite;
+}
+
+/* Responsive Design for the grid in Home.css */
+@media (max-width: 1200px) {
+    .planet-card {
+        width: calc(50% - 2rem);
+    }
+}
+
+@media (max-width: 768px) {
+    .planet-card {
+        width: 100%;
+    }
+}
