@@ -1,7 +1,7 @@
 // src/components/StarWarsComponent.jsx
 import React, { useState, useEffect } from 'react';
-import Filter from './Filter'; 
-import '../css/StarWarsComponent.css';
+import Filter from '../../components/Filter'; 
+import '../../css/StarWarsComponent.css';
 
 function StarWarsComponent() {
     const [allStarships, setAllStarships] = useState(null);

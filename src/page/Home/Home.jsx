@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../css/Home.css';
+import "../../css/Home.css"; 
 
 const Home = () => {
     const [allCharacters, setAllCharacters] = useState([]);

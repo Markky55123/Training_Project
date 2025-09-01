@@ -18,7 +18,7 @@ const person = {
     }
 };
 
-console.log(person.name, person.age, person.address);
+// console.log(person.name, person.age, person.address);
 
 
 
