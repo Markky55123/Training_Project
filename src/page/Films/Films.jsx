@@ -37,6 +37,8 @@ export default function Films() {
   if (error) {
     return <p className="error-message">Error: {error.message}</p>;
   }
+
+  const headersToExclude = ['uid', 'starships', 'vehicles', 'planets', 'opening_crawl', 'characters', 'species', 'url']
   
   return (
     <div>
@@ -45,17 +47,21 @@ export default function Films() {
           <table className="star-wars-table">
             <thead>
               <tr>
-                {Object.keys(allFilms[0]).map((header) => (
-                  <th key={header}>{header.replace(/_/g, ' ').toUpperCase()}</th>
-                ))}
+                {Object.keys(allFilms[0])
+                  .filter(header => !headersToExclude.includes(header))
+                  .map((header) => (
+                    <th key={header}>{header.replace(/_/g, ' ').toUpperCase()}</th>
+                  ))}
               </tr>
             </thead>
             <tbody>
               {allFilms.map((item) => (
                 <tr key={item.uid}>
-                  {Object.keys(allFilms[0]).map((header) => (
-                    <td key={`${item.uid}-${header}`}>{item[header]}</td>
-                  ))}
+                  {Object.keys(allFilms[0])
+                    .filter(header => !headersToExclude.includes(header))
+                    .map((header) => (
+                      <td key={`${item.uid}-${header}`}>{item[header]}</td>
+                    ))}
                 </tr>
               ))}
             </tbody>
